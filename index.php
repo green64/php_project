@@ -6,18 +6,16 @@
    $stringOne = "my email is ";
    $stringTwo = "samanthamccall@gmail.com";
 
-   echo $stringOne.$stringTwo;
-
    $name = 'Yoshi';
 
    // \ is an escape character
    echo "Hey my name is $name and I say \"hooray\"";
 
 
-  $age = 30;
+  // $age = 30;
 
-  // echo $name;
-  echo $name[0];
+echo strlen($name);
+echo str_replace('y', 'w', $name);
 
 
 ?>
