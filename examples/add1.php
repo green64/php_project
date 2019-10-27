@@ -1,19 +1,28 @@
 <?php 
-$title = $email = $ingredients = '';
-$errors = array('email' => '', 'title'=> '', 'ingredients' =>'');
+//data will be detected from the form and that will determine what happens next
+//has data been submitted via GET? if yes you see it at end of URL
+//data also stored in $_GET array THIS IS A GLOBAL ARRAY
+// if(isset($_GET['submit'])){
+//   echo $_GET['email'];
+//   echo $_GET['title'];
+//   echo $_GET['ingredients'];
 
-
+//this method hides data so you don't see it after URL
+//htmlspecialchars prevents malicious code from running
 if(isset($_POST['submit'])){
+  // echo htmlspecialchars($_POST['email']);
+  // echo htmlspecialchars($_POST['title']);
+  // echo htmlspecialchars($_POST['ingredients']);
 
   //check email
   
   if(empty($_POST['email'])){
-    $errors['email'] = 'We need your email';
+    echo 'An email is required <br />';
   }else {
   $email = $_POST['email'];
   //native PHP filter
   if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-      $errors['email'] = 'Give us a valid email';
+      ECHO 'email must be a valid address <br />';
     }
   }
 
@@ -21,38 +30,27 @@ if(isset($_POST['submit'])){
 //check title
 //using regex for validations
 if(empty($_POST['title'])){
-  $errors['title'] = 'Name your pie!';
+  echo 'A title is required <br />';
 }else {
 $title = $_POST['title'];
 //this is a RegEx expression
 if(!preg_match('/^[a-zA-Z\s]+$/', $title)){
-  $errors['title'] = 'Letters and spaces only please.';
+  echo 'Titles must be letters and spaces only <br />';
 }
 }
 
 
 //check ingredients
 if(empty($_POST['ingredients'])){
-  $errors['ingredients'] = 'Hey add some ingredients!';
+  echo 'An ingredient is required <br />';
 }else {
   $ingredients = $_POST['ingredients'];
   //this is a RegEx expression
   if(!preg_match('/^([a-zA-Z\s]+)(,\s*[a-zA-Z\s]*)*$/', $ingredients)){
-    $errors['ingredients'] = 'Use commas for more than one ingredient.';
+    echo 'Ingredients must be separated by commas <br />';
   } 
  }
- if (array_filter($errors)){
-   //need to define callback function here
-  //  echo 'errors in the form';
- } else {
-  //  echo 'form is valid';
-  //now redirecting to home
-   header('Location: index.php');
- }
-
 }//end of post check
-
-
 ?>
 <html>
 	
@@ -62,14 +60,11 @@ if(empty($_POST['ingredients'])){
     <h4 class="center">Add a Pizza</h4>
       <form class="white" action="add.php" method="POST">
         <label>Your Email:</label>
-        <input type="text" name="email" value="<?php echo htmlspecialchars($email) ?>">
-        <div class="red-text"><?php echo $errors['email']; ?></div>
+        <input type="text" name="email">
         <label>Pizza Title:</label>
-        <input type="text" name="title" value="<?php echo htmlspecialchars($title) ?>">
-        <div class="red-text"><?php echo $errors['title']; ?></div>
+        <input type="text" name="title">
         <label>Ingredients (comma separated):</label>
-        <input type="text" name="ingredients" value="<?php echo htmlspecialchars($ingredients) ?>">
-        <div class="red-text"><?php echo $errors['ingredients']; ?></div>
+        <input type="text" name="ingredients">
         <div class="center">
           <input type="submit" name="submit" class="btn brand z-depth-0">
         </div>
