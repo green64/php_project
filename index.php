@@ -1,4 +1,29 @@
 <?php 
+
+//connect with mysqi to db -- will use PDO later
+$conn = mysqli_connect('localhost', 'Sam', 'test1234', 'kitty_pizzas');
+
+//check connection
+if(!$conn){
+		echo 'Connection error' . mysqli_connect_error();
+}
+//construct query, make it, fetch results
+$sql = 'SELECT title, ingredients, id FROM pizzas ORDER BY created_at';
+
+//make query and get result
+$result = mysqli_query($conn, $sql);
+
+//fetch resulting rows as an array
+$pizzas = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+//clear results
+mysqli_free_result($result);
+
+//close connection
+mysqli_close($conn);
+
+// print_r($pizzas);
+
 ?>
 
 <!DOCTYPE html>
@@ -6,21 +31,30 @@
 	
 	<?php include('templates/header.php'); ?>
 
+<h4 class="center grey-text">Pizzas!</h4>
 
-<div style="margin: 0 auto; max-width:650px;">
-<h2>I've hit a roadblock</h2>
-<p>My form is working great. It's filtering responses, throwing errors 
-when responses are in the wrong format, etc., and redirecting users here if 
-everything is correct. Great!</>
-<p>Now I'm ready to set up my database, but I apparently don't have admin 
-rights on my own computer. Go figure. These are the times I could use a 
-mentor, a tutor ... someone who knows PHP? It's not really a PHP error, though. 
-I've tried a couple of solutions but I'm tired &mdash; and tired of looking. 
-Errors are best solved with fresh eyes.</p>
+<div class="container">
+	<div class="row">
+		<?php foreach($pizzas as $pizza){ ?>
 
-<p>Until I get the database working, click the Add Pizza button and try my 
-form out. It's pretty cool.</p>
+			<div class="col s6 md3">
+				<div class="card z-depth-0">
+				<div class="card-content center">
+					<h6 style="font-weight:bold;"><?php echo htmlspecialchars($pizza['title']); ?></h6>
+					<div><?php echo htmlspecialchars($pizza['ingredients']); ?></div>
+				</div>
+				<div class="card-action right-align">
+				<a class="brand-text" href="#">more info</a>
+				</div>
+				</div>
+			</div>
+		<?php } ?>
+		<div>
+			<p class="center">If you can see the pizzas in the cards above my database is working!</p>
+			</div>
+	</div>
 </div>
+
 	<?php include('templates/footer.php'); ?>
 
 </html>
