@@ -51,6 +51,8 @@ mysqli_close($conn);
 		<?php } ?>
 		<div>
 			<p class="center">If you can see the pizzas in the cards above my database is working!</p>
+			<p class="center">If you can't see them my JawsDB addon failed in Heroku. Back to the drawing board!</p>
+
 			</div>
 	</div>
 </div>
