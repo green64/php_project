@@ -1,12 +1,19 @@
 <?php 
 
-//connect with mysqi to db -- will use PDO later
-$conn = mysqli_connect('localhost', 'Sam', 'test1234', 'kitty_pizzas');
+include('config/db_connect.php');
 
-//check connection
-if(!$conn){
-		echo 'Connection error' . mysqli_connect_error();
-}
+//other connection method - PDO
+// try {
+// 	$conn = new PDO("mysql:host=$localhost;dbname=$kitty_pizzas", $Sam, $test1234);
+// 	// set the PDO error mode to exception
+// 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// 	echo "Connected successfully";
+// 	}
+// catch(PDOException $e)
+// 	{
+// 	echo "Connection failed: " . $e->getMessage();
+// 	}
+
 //construct query, make it, fetch results
 $sql = 'SELECT title, ingredients, id FROM pizzas ORDER BY created_at';
 
@@ -22,7 +29,9 @@ mysqli_free_result($result);
 //close connection
 mysqli_close($conn);
 
-// print_r($pizzas);
+// explode(',', $pizzas[0]['ingredients']);
+
+
 
 ?>
 
@@ -35,25 +44,36 @@ mysqli_close($conn);
 
 <div class="container">
 	<div class="row">
-		<?php foreach($pizzas as $pizza){ ?>
+	<!-- replace { } with : and endforeach; -->
+		<?php foreach($pizzas as $pizza): ?>
 
 			<div class="col s6 md3">
 				<div class="card z-depth-0">
 				<div class="card-content center">
 					<h6 style="font-weight:bold;"><?php echo htmlspecialchars($pizza['title']); ?></h6>
-					<div><?php echo htmlspecialchars($pizza['ingredients']); ?></div>
-				</div>
+					<ul class="grey-text">
+						<?php foreach(explode(',', $pizza['ingredients']) as $ing): ?>
+						<li><?php echo htmlspecialchars($ing); ?></li>
+						<?php endforeach; ?>
+					</ul>
+					</div>
 				<div class="card-action right-align">
 				<a class="brand-text" href="#">more info</a>
 				</div>
 				</div>
 			</div>
-		<?php } ?>
-		<div>
+
+					<?php endforeach; ?>
+					<?php if(count($pizzas) >= 2): ?>
+					<p>There are 2 or more pizzas</p>
+					<?php else: ?>
+					<p>There are less than 2 pizzas</p>
+					<?php	endif; ?>
+		<!-- <div>
 			<p class="center">If you can see the pizzas in the cards above my database is working!</p>
 			<p class="center">Ok third time's the charm!</p>
 
-			</div>
+			</div> -->
 	</div>
 </div>
 
