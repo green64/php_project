@@ -1,6 +1,6 @@
 <?php 
 //connect with mysqi to db -- will use PDO later
-$conn = mysqli_connect('localhost', 'Sam', 'test1234', 'kitty_pizzas');
+$conn = mysqli_connect('', 'Sam', 'test1234', 'kitty_pizzas');
 
 //check connection
 if(!$conn){
