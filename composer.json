@@ -1,3 +1,8 @@
 {
- 
+    "name": "samster/tuts",
+    "description": "php project",
+    "type": "project",
+    "require": {
+        "illuminate/support": "^6.4"
+    }
 }
