@@ -2,17 +2,6 @@
 
 include('config/db_connect.php');
 
-//other connection method - PDO
-// try {
-// 	$conn = new PDO("mysql:host=$localhost;dbname=$kitty_pizzas", $Sam, $test1234);
-// 	// set the PDO error mode to exception
-// 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-// 	echo "Connected successfully";
-// 	}
-// catch(PDOException $e)
-// 	{
-// 	echo "Connection failed: " . $e->getMessage();
-// 	}
 
 //construct query, make it, fetch results
 $sql = 'SELECT title, ingredients, id FROM pizzas ORDER BY created_at';
