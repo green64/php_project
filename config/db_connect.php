@@ -1,11 +1,29 @@
 <?php 
-//connect with mysqi to db -- will use PDO later
-$conn = mysqli_connect('', 'Sam', 'test1234', 'kitty_pizzas');
+//use this for LOCAL connection
+// $conn = mysqli_connect('', 'Sam', 'test1234', 'kitty_pizzas');
 
-//check connection
-if(!$conn){
-    echo 'Connection error' . mysqli_connect_error();
+// //check connection
+// if(!$conn){
+//     echo 'Connection error' . mysqli_connect_error();
+// }
+
+//use these variables for prod
+$url = getenv('JAWSDB_URL');
+$dbparts = parse_url($url);
+
+$hostname = $dbparts['host'];
+$username = $dbparts['user'];
+$password = $dbparts['pass'];
+$database = ltrim($dbparts['path'],'/');
+
+$conn = new mysqli($hostname, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+echo "Connection was successfully established!";
+
 
 //other connection method - PDO
 // try {
