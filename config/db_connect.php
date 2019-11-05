@@ -12,34 +12,14 @@
 
 //try cleardb connection
 // use these variables for prod
-$cleardb_url = parse_url{getenv("CLEARDB_DATABASE_URL")};
-$cleardb_server = $cleardb_url["host"];
-$cleardb_username = $cleardb_url["user"];
-$cleardb_password = $cleardb_url["pass"];
-$cleardb_db = substr($cleardb_url["path"],1);
+// $cleardb_url = parse_url{getenv("CLEARDB_DATABASE_URL")};
+// $cleardb_server = $cleardb_url["host"];
+// $cleardb_username = $cleardb_url["user"];
+// $cleardb_password = $cleardb_url["pass"];
+// $cleardb_db = substr($cleardb_url["path"],1);
 
-$active_group = 'default';
-$active_record = TRUE;
-
-$conn = new mysqli($hostname, $username, $password, $database);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-echo "Connection was successfully established!";
-
-
-
-
-//use these variables for prod
-// $url = getenv('JAWSDB_URL');
-// $dbparts = parse_url($url);
-
-// $hostname = $dbparts['host'];
-// $username = $dbparts['user'];
-// $password = $dbparts['pass'];
-// $database = ltrim($dbparts['path'],'/');
+// $active_group = 'default';
+// $active_record = TRUE;
 
 // $conn = new mysqli($hostname, $username, $password, $database);
 
@@ -48,6 +28,25 @@ echo "Connection was successfully established!";
 //     die("Connection failed: " . $conn->connect_error);
 // }
 // echo "Connection was successfully established!";
+
+
+
+use these variables for prod
+$url = getenv('JAWSDB_URL');
+$dbparts = parse_url($url);
+
+$hostname = $dbparts['host'];
+$username = $dbparts['user'];
+$password = $dbparts['pass'];
+$database = ltrim($dbparts['path'],'/');
+
+$conn = new mysqli($hostname, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+echo "Connection was successfully established!";
 
 
 //other connection method - PDO
