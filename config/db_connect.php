@@ -31,7 +31,7 @@
 
 
 
-use these variables for prod
+// use these variables for prod
 $url = getenv('JAWSDB_URL');
 $dbparts = parse_url($url);
 
