@@ -3,7 +3,9 @@
     "description": "php project",
     "type": "project",
     "require": {
-        "illuminate/support": "^6.4",
-        "ext-mysql": "*"
+        "illuminate/support": "^6.4"
+    },
+    "require-dev": {
+        "guanguans/soar-php": "^1.1"
     }
 }

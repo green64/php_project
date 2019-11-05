@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ecc85c2c36a040a4472a7ce00822b108",
+    "content-hash": "d6bc22f99b04b77169d324fe26339efd",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -535,7 +535,59 @@
             "time": "2019-09-17T11:12:18+00:00"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "guanguans/soar-php",
+            "version": "v1.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guanguans/soar-php.git",
+                "reference": "68701ee352a78294484e333fc87abdc02c1e4f82"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guanguans/soar-php/zipball/68701ee352a78294484e333fc87abdc02c1e4f82",
+                "reference": "68701ee352a78294484e333fc87abdc02c1e4f82",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-pdo": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~5 || ~7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Guanguans\\SoarPHP\\": "src"
+                },
+                "files": [
+                    "src/Helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "琯琯",
+                    "email": "yzmguanguan@gmail.com"
+                }
+            ],
+            "description": "SQL optimizer and rewriter php extension package.",
+            "keywords": [
+                "debug",
+                "mysql",
+                "php",
+                "soar",
+                "sql"
+            ],
+            "time": "2019-08-29T07:22:52+00:00"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],
