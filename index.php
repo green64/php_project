@@ -61,17 +61,7 @@ mysqli_close($conn);
 					<?php	endif; ?>
 		
 	</div>
-	<div>
-			<h4>11-4 update</h4>
-			<p>So ... I have a locally working app that lets users create, read, and delete records — 
-			but no updates so I can't technically say it's a CRUD app. (Crud isn't a bad thing in dev world.)</p>
 
-			<p>Of course I realize this app is online, and all you can see is an error message. It's taken me some time 
-			and research to understand packages and dependencies in the PHP world. But I've discovered Packagist &mdash; 
-			the PHP version of NPM or close to it &mdash; and some other helpful tools, so it won't be long til my app 
-			works online as well as locally.</p>
-			</div>
-</div>
 
 	<?php include('templates/footer.php'); ?>
 
