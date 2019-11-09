@@ -43,7 +43,7 @@ $database = ltrim($dbparts['path'],'/');
 $conn = new mysqli($hostname, $username, $password, $database);
 
 
-Check connection
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
