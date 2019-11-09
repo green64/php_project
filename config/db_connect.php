@@ -1,11 +1,11 @@
 <?php 
 //use this for LOCAL connection
-// $conn = mysqli_connect('', 'Sam', 'test1234', 'kitty_pizzas');
+$conn = mysqli_connect($_ENV["JAWSDB_URL"], 'ebut2cn1rcbaxv2g', 'dzk7j6drh0o42ov7', 'pizzas');
 
-// //check connection
-// if(!$conn){
-//     echo 'Connection error' . mysqli_connect_error();
-// }
+//check connection
+if(!$conn){
+    echo 'Connection error' . mysqli_connect_error();
+}
 
 
 
@@ -30,23 +30,23 @@
 // echo "Connection was successfully established!";
 
 
+// $conn = new mysqli($hostname, $username, $password, $database);
 
-// use these variables for prod
-$url = getenv('JAWSDB_URL');
-$dbparts = parse_url($url);
+// // use these variables for prod
+// $url = getenv('JAWSDB_URL');
+// $dbparts = parse_url($url);
 
-$hostname = $dbparts['host'];
-$username = $dbparts['user'];
-$password = $dbparts['pass'];
-$database = ltrim($dbparts['path'],'/');
+// $hostname = $dbparts['host'];
+// $username = $dbparts['user'];
+// $password = $dbparts['pass'];
+// $database = ltrim($dbparts['path'],'/');
 
-$conn = new mysqli($hostname, $username, $password, $database);
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-echo "Connection was successfully established!";
+// // Check connection
+// if ($conn->connect_error) {
+//     die("Connection failed: " . $conn->connect_error);
+// }
+// echo "Connection was successfully established!";
 
 
 //other connection method - PDO
